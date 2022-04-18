@@ -1,9 +1,9 @@
-const axios = require('axios');
-const cheerio = require('cheerio');
-const { parentPort } = require('worker_threads');
-const { URL } = require('url');
+const axios = require("axios");
+const cheerio = require("cheerio");
+const { parentPort } = require("worker_threads");
+const { URL } = require("url");
 
-parentPort.on('message', (data) => {
+parentPort.on("message", (data) => {
   fetch_url_link(data);
 });
 
@@ -12,7 +12,7 @@ async function fetch_url_link({ url, worker_id }) {
     let response = await axios.get(url);
     const html = response.data;
     const $ = cheerio.load(html);
-    const links = $('a');
+    const links = $("a");
     if (links.length === 0) {
       parentPort.postMessage([]);
       return;
@@ -25,7 +25,7 @@ async function fetch_url_link({ url, worker_id }) {
       const href =
         links[link].attribs && links[link].attribs.href
           ? links[link].attribs.href
-          : '';
+          : "";
       if (link_belongs_to_domain(domain, href)) {
         urls.push(href);
       }

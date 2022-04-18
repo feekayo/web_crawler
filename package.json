@@ -2,7 +2,7 @@
   "name": "web_crawler",
   "version": "1.0.0",
   "description": "WEB CRAWLER",
-  "main": "src/index.js",
+  "main": "./bin/crawl",
   "bin": {
     "crawl": "bin/crawl"
   },
