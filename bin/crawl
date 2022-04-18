@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+
+// (Fikayo 28-06-2020) ems dependency to allow use of import with codebase
+require('../src/crawler').run(process.argv);
